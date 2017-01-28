@@ -1,0 +1,10 @@
+package evolution.environment;
+
+enum MaterialType {
+	A = 0;
+	B = 1;
+}
+
+type Material {
+	MaterialType type = 1;
+}
