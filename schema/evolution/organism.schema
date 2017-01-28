@@ -38,6 +38,7 @@ component Mover {
 }
 
 component Affectable {
+	id = 1003;
 	list<MaterialLimit> limit_list = 1;
 	event Effect taken_damage;
 }
