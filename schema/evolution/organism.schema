@@ -2,7 +2,7 @@ package evolution.organism;
 import "evolution/environment.schema";
 
 type Gene {
-	string geneChar = 1;
+	string gene_char = 1;
 }
 
 type Reproduce {
@@ -11,7 +11,7 @@ type Reproduce {
 
 type MaterialLimit {
 	evolution.environment.Material material = 1;
-	int32 limit = 2;
+	uint32 limit = 2;
 }
 
 type Effect {
@@ -38,6 +38,6 @@ component Mover {
 }
 
 component Affectable {
-	list<MaterialLimit> limitList = 1;
-	event Effect takenDamage; 
+	list<MaterialLimit> limit_list = 1;
+	event Effect taken_damage;
 }
