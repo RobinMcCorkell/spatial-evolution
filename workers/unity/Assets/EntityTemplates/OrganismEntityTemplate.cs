@@ -3,6 +3,7 @@ using Evolution.Organism;
 using Evolution.Environment;
 using Improbable.Collections;
 using Improbable.Worker;
+using Improbable.Math;
 using UnityEngine;
 
 namespace Assets.EntityTemplates

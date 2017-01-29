@@ -2,6 +2,7 @@
 using Evolution.Environment;
 using Improbable.Collections;
 using Improbable.Worker;
+using Improbable.Math;
 using UnityEngine;
 
 namespace Assets.EntityTemplates
@@ -13,7 +14,7 @@ namespace Assets.EntityTemplates
             var entity = new Entity();
 
             entity.Add(new Position.Data(new PositionData(position)));
-            entity.Add(new Environment.Data(new EnvironmentData(initalResources)));
+            entity.Add(new Environment.Data(new EnvironmentData(initialResources)));
 
             var acl = Acl.Build()
                 .SetReadAccess(CommonPredicates.PhysicsOrVisual)
