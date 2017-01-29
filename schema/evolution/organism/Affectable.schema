@@ -8,4 +8,5 @@ component Affectable {
 	id = 1003;
 	map<evolution.Material, uint32> material_limits = 1;
 	event Effect taken_damage;
+	double mutation_probability = 2;
 }

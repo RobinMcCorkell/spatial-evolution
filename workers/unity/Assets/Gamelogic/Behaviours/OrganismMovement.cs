@@ -37,19 +37,21 @@ namespace Assets.Gamelogic.Organisms {
             var currentAngle = OrganismMoverWriter.Data.angle;
 
             tickDelay = Time.deltaTime;
+            xTranslation = currentSpeed * tickDelay * Mathf.Cos(currentAngle);
+            yTranslation = currentSpeed * tickDelay * Mathf.Sin(currentAngle);
 
-            transform.Translate(
-                currentSpeed * tickDelay * Mathf.Cos(currentAngle),
-                currentSpeed * tickDelay * Mathf.Sin(currentAngle),
-                0,
-                Space.World
-            );
+            transform.Translate(xTranslation, yTranslation, 0, Space.World);
+
+            Coordinates oldCoordinates = OrganismMoverWriter.Data.position;
+            Coordinates newCoordinates = new Coordinates(oldCoordinates.x + xTranslation, oldCoordinates.y + yTranslation, oldCoordinates.z);
+
+            OrganismMoverWriter.Send(new Mover.Update().SetPosition(newCoordinates));
 
             ticksTravelled ++;
         }
 
         public void changeDirection() {
-            OrganismMoverWriter.Send(new Mover.Update().SetAngle(Random.Range(1, 360)));
+            OrganismMoverWriter.Send(new Mover.Update().SetAngle(Random.Range(0f, 2 * Mathf.PI)));
         }
     }
 
