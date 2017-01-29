@@ -19,6 +19,16 @@ namespace Assets.Gamelogic.Behaviours
         [Require]
         private Consumer.Writer ConsumerWriter;
 
+        public void OnEnable()
+        {
+            InvokeRepeating("ConsumeFromNearby", 0, 1.0f);
+        }
+
+        public void OnDisable()
+        {
+            CancelInvoke("ConsumeFromNearby");
+        }
+
         private void ConsumeFromNode(EntityId nodeId)
         {
             SpatialOS.Commands.SendCommand(
@@ -41,7 +51,7 @@ namespace Assets.Gamelogic.Behaviours
             );
         }
 
-        private void ConsumeFromNearby()
+        public void ConsumeFromNearby()
         {
             var query = Query.And(
                 Query.HasComponent<Resources>(),
