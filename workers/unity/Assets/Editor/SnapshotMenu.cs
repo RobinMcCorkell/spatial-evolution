@@ -26,9 +26,9 @@ public class SnapshotMenu : MonoBehaviour
         int[][] genomeKey = { new int[] { 2, 5, 17 }, new int[] { 2, 6, 11 }, new int[] { 6, 13, 15}, new int[] { 1, 5, 17},
             new int[] { 9, 10, 22}, new int[] { 11, 21, 23}, new int[] { 6, 7, 13}, new int[] { 3, 5, 22}};
 
-        for (int i = 0; i < 60; i++)
+        for (int i = 0; i < 200; i++)
         {
-            for (int j = 0; j < 60; j++)
+            for (int j = 0; j < 200; j++)
             {
                 Coordinates pos = new Coordinates(i, 0, j);
                 Map<Evolution.Material, uint> initialRes = new Map<Evolution.Material, uint>(2);
@@ -40,7 +40,7 @@ public class SnapshotMenu : MonoBehaviour
             }
         }
 
-        for (int id = currentEntityId; id < currentEntityId + 50; id++)
+        for (int id = 0; id < 1000; id++)
         {
             Coordinates pos = new Coordinates(Random.Range(5f, 55f), 0.0f, Random.Range(5f, 55f));
             Evolution.Organism.Genome gen1 = new Evolution.Organism.Genome(GetRandomGenome());
