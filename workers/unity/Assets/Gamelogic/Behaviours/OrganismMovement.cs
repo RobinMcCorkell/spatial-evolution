@@ -15,8 +15,12 @@ namespace Assets.Gamelogic.Organisms {
 
         int ticksTravelled = 0;
         int maxTicks;
-        float tickDelay; //time between Update calls.
+        float tickDelay;
 
+        public void onStart()
+        {
+            tickDelay = Time.deltaTime; //time between Update calls.
+        }
         public void OnEnable() {
             changeDirection();
             moveOrganism();
@@ -28,7 +32,6 @@ namespace Assets.Gamelogic.Organisms {
 
         public void moveOrganism()
         {
-            tickDelay = Time.deltaTime;
 
             maxTicks = OrganismMoverWriter.Data.timeConstant;
             if ((float)ticksTravelled / maxTicks > Random.Range(0.3f, 1.0f) * 2.0f)
