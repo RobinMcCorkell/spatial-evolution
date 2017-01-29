@@ -3,6 +3,7 @@ package evolution.organism;
 component Mover {
 	id = 1002;
 	EntityPosition position = 1;
-	double speed = 2;
-	uint32 erraticness = 3;
+	float speed = 2;
+	float angle = 3;
+	int32 time_constant = 4;
 }
