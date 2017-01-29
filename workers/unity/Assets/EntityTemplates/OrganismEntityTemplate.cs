@@ -21,9 +21,9 @@ namespace Assets.EntityTemplates
                         new ConsumerData(Evolution.Material.A, Evolution.Material.B, 1.0)
                         ));
             entity.Add(new Reproducer.Data(new ReproducerData(genome1, genome2)));
-            entity.Add(new Mover.Data(new MoverData(position, 10f, 0.0f, 10)));
+            entity.Add(new Mover.Data(new MoverData(position, 2f, 0.0f, 15)));
             entity.Add(new Affectable.Data(
-                        new AffectableData(new Map<Evolution.Material, uint>(), 0.0)
+                        new AffectableData(new Map<Evolution.Material, uint>(), 0.001)
                         ));
 
             var acl = Acl.Build()

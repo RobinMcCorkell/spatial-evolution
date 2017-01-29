@@ -14,6 +14,8 @@ namespace Assets.Gamelogic.Organisms
 
         [Require]
         private Affectable.Writer OrganismMutationWriter;
+        [Require]
+        private Reproducer.Writer OrganismGenomeWriter;
 
         double mutationProbability;
 
@@ -33,9 +35,18 @@ namespace Assets.Gamelogic.Organisms
 
         public void mutate()
         {
-            
-        }
+            byte[] b = new byte[3];
 
+            for (int i = 0; i < 3; i++)
+            {
+                b[i] = (byte)Random.Range(0, 255);
+            }
+            string stringGenome = Convert.ToBase64String(b);
+
+            Genome newGenome = new Genome(stringGenome);
+
+            OrganismGenomeWriter.Send(new Reproducer.Update().SetGenome1(newGenome));
+        }
     }
 
 }
