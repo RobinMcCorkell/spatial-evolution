@@ -20,7 +20,7 @@ namespace Assets.EntityTemplates
                         new ConsumerData(Evolution.Material.A, Evolution.Material.B, 1.0)
                         ));
             entity.Add(new Reproducer.Data(new ReproducerData(genome1, genome2)));
-            entity.Add(new Mover.Data(new MoverData(position, (float) 1.0, (float) 0, (int) 10)));
+            entity.Add(new Mover.Data(new MoverData(position, 1.0f, 0.0f, 10)));
             entity.Add(new Affectable.Data(
                         new AffectableData(new Map<Evolution.Material, uint>())
                         ));
