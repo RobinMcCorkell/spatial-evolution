@@ -43,7 +43,7 @@ namespace Assets.Gamelogic.Organisms {
             var xTranslation = currentSpeed * tickDelay * Mathf.Cos(currentAngle);
             var zTranslation = currentSpeed * tickDelay * Mathf.Sin(currentAngle);
 
-            transform.Translate(xTranslation, yTranslation, 0, Space.World);
+            transform.Translate(xTranslation, 0, zTranslation, Space.World);
 
             Coordinates oldCoordinates = OrganismMoverWriter.Data.position;
             Coordinates newCoordinates = new Coordinates(Mathf.Clamp((float)oldCoordinates.X + xTranslation, 0, 200), 
