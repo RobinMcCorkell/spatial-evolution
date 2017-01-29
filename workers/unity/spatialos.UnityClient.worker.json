@@ -38,6 +38,21 @@
           "external-default-client.log"
         ]
       },
+      "linux": {
+        "command": "build/worker/UnityClient@Linux/UnityClient@Linux.exe",
+        "arguments": [
+          "+assemblyName",
+          "local_assembly",
+          "+engineType",
+          "UnityClient",
+          "+infraServicesUrl",
+          "http://127.0.0.1:21000",
+          "+appName",
+          "${IMPROBABLE_PROJECT_NAME}",
+          "-logfile",
+          "external-default-client.log"
+        ]
+      },
       "macos": {
         "command": "open",
         "arguments": [
