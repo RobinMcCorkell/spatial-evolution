@@ -16,7 +16,7 @@ public class SnapshotMenu : MonoBehaviour
     private static readonly string InitialWorldSnapshotPath = Application.dataPath +
                                                               "/../../../snapshots/initial.snapshot";
 
-    [MenuItem("Improbable/Snapshots/Generate Snapshot Programmatically")]
+    [MenuItem("Improbable/Snapshots/Generate Snapshot for spatial-evolution")]
     [UsedImplicitly]
     private static void GenerateSnapshotProgrammatically()
     {
@@ -37,7 +37,7 @@ public class SnapshotMenu : MonoBehaviour
             }
         }
 
-        for (int id = currentEntityId; id < 20; id++)
+        for (int id = currentEntityId; id < currentEntityId + 20; id++)
         {
             Coordinates pos = new Coordinates(Random.Range(0, 20), Random.Range(0, 20), 0);
             Evolution.Organism.Genome gen1 = new Evolution.Organism.Genome(GetRandomGenome());
@@ -50,17 +50,15 @@ public class SnapshotMenu : MonoBehaviour
 
     private static string GetRandomGenome()
     {
-        string genome = "";
-        for (int i = 0; i < 6; i++)
+        byte[] b = new byte[3];
+
+        for (int i = 0; i < 3; i++)
         {
-            byte[] b = new byte[6];
-            for (int j = 0; i < 4; i++)
-            {
-                b[i] = (byte) Random.Range(0, 1);
-            }
-            genome += System.Convert.ToBase64String(b);
+            b[i] = (byte) Random.Range(0, 255);
         }
-        Debug.Log(genome);
+        string genome = System.Convert.ToBase64String(b);
+        
+        //Debug.LogFormat(genome);
         return genome;
     }
 
