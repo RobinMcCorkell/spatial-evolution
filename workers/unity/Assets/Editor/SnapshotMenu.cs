@@ -42,7 +42,7 @@ public class SnapshotMenu : MonoBehaviour
 
         for (int id = currentEntityId; id < currentEntityId + 1000; id++)
         {
-            Coordinates pos = new Coordinates(Random.Range(5f, 55f), 0.0f, Random.Range(5f, 55f));
+            Coordinates pos = new Coordinates(Random.Range(5f, 195f), 0.0f, Random.Range(5f, 195f));
             Evolution.Organism.Genome gen1 = new Evolution.Organism.Genome(GetRandomGenome());
             Evolution.Organism.Genome gen2 = new Evolution.Organism.Genome(GetRandomGenome());
             snapshotEntities.Add(new EntityId(id), OrganismEntityTemplate.GenerateOrganismEntityTemplate(pos, gen1, gen2, genomeKey));

@@ -31,7 +31,7 @@ namespace Assets.Gamelogic.Organisms {
             tickDelay = Time.deltaTime;
 
             maxTicks = OrganismMoverWriter.Data.timeConstant;
-            if ((float)ticksTravelled / maxTicks > Random.Range(0.3, 1) * 2)
+            if ((float)ticksTravelled / maxTicks > Random.Range(0.3f, 1.0f) * 2.0f)
             {
                 changeDirection();
                 ticksTravelled = 0;
