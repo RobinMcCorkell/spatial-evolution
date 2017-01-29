@@ -10,14 +10,14 @@ namespace Assets.EntityTemplates
 {
     public class OrganismEntityTemplate : MonoBehaviour
     {
-        public static SnapshotEntity GenerateOrganismEntityTemplate(Coordinates position, Genome genome)
+        public static SnapshotEntity GenerateOrganismEntityTemplate(Coordinates position, Genome genome1, Genome genome2)
         {
-            var entity = new SnapshotEntity { Prefab = "Organism" };
+            var entity = new SnapshotEntity { Prefab = "OrganismPrefab" };
 
             entity.Add(new Consumer.Data(
                         new ConsumerData(Evolution.Material.A, Evolution.Material.B, 1.0)
                         ));
-            entity.Add(new Reproducer.Data(new ReproducerData(genome, genome)));
+            entity.Add(new Reproducer.Data(new ReproducerData(genome1, genome2)));
             entity.Add(new Mover.Data(new MoverData(position, 1.0, 1)));
             entity.Add(new Affectable.Data(
                         new AffectableData(new Map<Evolution.Material, uint>())
