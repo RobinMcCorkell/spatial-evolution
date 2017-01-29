@@ -18,8 +18,6 @@ namespace Assets.Gamelogic.Organisms
         double mutationProbability;
 
         public void OnEnable() {
-            changeDirection();
-            moveOrganism();
         }
 
         public void Update() {

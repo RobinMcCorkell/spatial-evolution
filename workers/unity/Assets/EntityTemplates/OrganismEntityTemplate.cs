@@ -22,7 +22,7 @@ namespace Assets.EntityTemplates
             entity.Add(new Reproducer.Data(new ReproducerData(genome1, genome2)));
             entity.Add(new Mover.Data(new MoverData(position, 10f, 0.0f, 10)));
             entity.Add(new Affectable.Data(
-                        new AffectableData(new Map<Evolution.Material, uint>())
+                        new AffectableData(new Map<Evolution.Material, uint>(), 0.0)
                         ));
 
             var acl = Acl.Build()

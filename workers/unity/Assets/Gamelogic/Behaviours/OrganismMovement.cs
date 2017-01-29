@@ -15,7 +15,7 @@ namespace Assets.Gamelogic.Organisms {
 
         int ticksTravelled = 0;
         int maxTicks;
-        float tickDelay; //time between Update calls.
+        float tickDelay = Time.deltaTime; //time between Update calls.
 
         public void OnEnable() {
             changeDirection();
@@ -36,14 +36,13 @@ namespace Assets.Gamelogic.Organisms {
             var currentSpeed = OrganismMoverWriter.Data.speed;
             var currentAngle = OrganismMoverWriter.Data.angle;
 
-            tickDelay = Time.deltaTime;
-            xTranslation = currentSpeed * tickDelay * Mathf.Cos(currentAngle);
-            yTranslation = currentSpeed * tickDelay * Mathf.Sin(currentAngle);
+            var xTranslation = currentSpeed * tickDelay * Mathf.Cos(currentAngle);
+            var yTranslation = currentSpeed * tickDelay * Mathf.Sin(currentAngle);
 
             transform.Translate(xTranslation, yTranslation, 0, Space.World);
 
             Coordinates oldCoordinates = OrganismMoverWriter.Data.position;
-            Coordinates newCoordinates = new Coordinates(oldCoordinates.x + xTranslation, oldCoordinates.y + yTranslation, oldCoordinates.z);
+            Coordinates newCoordinates = new Coordinates(oldCoordinates.X + xTranslation, oldCoordinates.Y + yTranslation, oldCoordinates.Z);
 
             OrganismMoverWriter.Send(new Mover.Update().SetPosition(newCoordinates));
 
