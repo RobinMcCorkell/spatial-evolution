@@ -60,7 +60,7 @@ namespace Assets.Gamelogic.Behaviours
         {
             var query = Query.And(
                 Query.HasComponent<Resources>(),
-                Query.InSphere(transform.position.x, transform.position.y, transform.position.z, ConsumerWriter.Data.radius)
+                Query.InSphere(transform.position.x, transform.position.y, transform.position.z, 2.0)
             ).ReturnOnlyEntityIds();
 
             SpatialOS.Commands.SendQuery(ConsumerWriter, query, result => {

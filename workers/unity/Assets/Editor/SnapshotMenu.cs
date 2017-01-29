@@ -40,7 +40,7 @@ public class SnapshotMenu : MonoBehaviour
             }
         }
 
-        for (int id = 0; id < 1000; id++)
+        for (int id = currentEntityId; id < currentEntityId + 1000; id++)
         {
             Coordinates pos = new Coordinates(Random.Range(5f, 55f), 0.0f, Random.Range(5f, 55f));
             Evolution.Organism.Genome gen1 = new Evolution.Organism.Genome(GetRandomGenome());
