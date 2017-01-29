@@ -14,6 +14,6 @@ component Resources {
 	id = 1100;
 	map<Material, uint32> resources = 1;
 
-	command ConsumptionRequest consume returns ConsumptionResponse;
+	command ConsumptionRequest consume_resources returns ConsumptionResponse;
 }
 
