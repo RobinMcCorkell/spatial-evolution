@@ -39,6 +39,10 @@ namespace Assets.Gamelogic.Behaviours
 
         private void onTriggerEnter(Collider other)
         {
+
+            int[][] genomeKey = { new int[] { 2, 5, 17 }, new int[] { 2, 6, 11 }, new int[] { 6, 13, 15}, new int[] { 1, 5, 17},
+            new int[] { 9, 10, 22}, new int[] { 11, 21, 23}, new int[] { 6, 7, 13}, new int[] { 3, 5, 22}};
+
             if (ReproducerReader == null)
                 return;
 
@@ -52,7 +56,7 @@ namespace Assets.Gamelogic.Behaviours
                 Coordinates childCoords = MoverReader.Data.position;
 
                 var template = OrganismEntityTemplate.GenerateOrganismEntityTemplate(
-                    childCoords, childGenome1, childGenome2
+                    childCoords, childGenome1, childGenome2, genomeKey
                 );
                 SpatialOS.WorkerCommands.CreateEntity("Organism", template, result =>
                 {

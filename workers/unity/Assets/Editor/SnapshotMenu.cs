@@ -23,6 +23,9 @@ public class SnapshotMenu : MonoBehaviour
         var snapshotEntities = new Dictionary<EntityId, SnapshotEntity>();
         var currentEntityId = 0;
 
+        int[][] genomeKey = { new int[] { 2, 5, 17 }, new int[] { 2, 6, 11 }, new int[] { 6, 13, 15}, new int[] { 1, 5, 17},
+            new int[] { 9, 10, 22}, new int[] { 11, 21, 23}, new int[] { 6, 7, 13}, new int[] { 3, 5, 22}};
+
         for (int i = 0; i < 60; i++)
         {
             for (int j = 0; j < 60; j++)
@@ -42,7 +45,7 @@ public class SnapshotMenu : MonoBehaviour
             Coordinates pos = new Coordinates(Random.Range(5f, 55f), 0.0f, Random.Range(5f, 55f));
             Evolution.Organism.Genome gen1 = new Evolution.Organism.Genome(GetRandomGenome());
             Evolution.Organism.Genome gen2 = new Evolution.Organism.Genome(GetRandomGenome());
-            snapshotEntities.Add(new EntityId(id), OrganismEntityTemplate.GenerateOrganismEntityTemplate(pos, gen1, gen2));
+            snapshotEntities.Add(new EntityId(id), OrganismEntityTemplate.GenerateOrganismEntityTemplate(pos, gen1, gen2, genomeKey));
         }
 
         Debug.Log(snapshotEntities.Count);
