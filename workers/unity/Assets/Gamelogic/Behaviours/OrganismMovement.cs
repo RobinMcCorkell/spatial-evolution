@@ -28,8 +28,9 @@ namespace Assets.Gamelogic.Organisms {
 
         public void moveOrganism() {
             maxTicks = OrganismMoverWriter.Data.timeConstant;
-            if ((ticksTravelled/maxTicks > Random.Range(0,1) * 2) {
+            if (ticksTravelled/maxTicks > Random.Range(0,1) * 2) {
                 changeDirection();
+                ticksTravelled = 0;
             }
 
             var currentSpeed = OrganismMoverWriter.Data.speed;
@@ -39,12 +40,12 @@ namespace Assets.Gamelogic.Organisms {
 
             transform.Translate(
                 currentSpeed * tickDelay * Mathf.Cos(currentAngle),
-                0,
                 currentSpeed * tickDelay * Mathf.Sin(currentAngle),
+                0,
                 Space.World
             );
 
-            ticksTravelled += ticksTravelled;
+            ticksTravelled ++;
         }
 
         public void changeDirection() {

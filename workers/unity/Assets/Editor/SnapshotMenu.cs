@@ -23,11 +23,11 @@ public class SnapshotMenu : MonoBehaviour
         var snapshotEntities = new Dictionary<EntityId, SnapshotEntity>();
         var currentEntityId = 0;
 
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 60; i++)
         {
-            for (int j = 0; j < 50; j++)
+            for (int j = 0; j < 60; j++)
             {
-                Coordinates pos = new Coordinates(i, 0, j);
+                Coordinates pos = new Coordinates(i, j, 0);
                 Map<Evolution.Material, uint> initialRes = new Map<Evolution.Material, uint>(2);
                 foreach (Evolution.Material mat in Enum.GetValues(typeof(Evolution.Material)))
                 {
@@ -39,7 +39,7 @@ public class SnapshotMenu : MonoBehaviour
 
         for (int id = currentEntityId; id < currentEntityId + 50; id++)
         {
-            Coordinates pos = new Coordinates(Random.Range(0f, 20f), 0, Random.Range(0f, 20f));
+            Coordinates pos = new Coordinates(Random.Range(5f, 55f), Random.Range(5f, 55f), 0);
             Evolution.Organism.Genome gen1 = new Evolution.Organism.Genome(GetRandomGenome());
             Evolution.Organism.Genome gen2 = new Evolution.Organism.Genome(GetRandomGenome());
             snapshotEntities.Add(new EntityId(id), OrganismEntityTemplate.GenerateOrganismEntityTemplate(pos, gen1, gen2));
@@ -57,7 +57,7 @@ public class SnapshotMenu : MonoBehaviour
         {
             b[i] = (byte) Random.Range(0, 255);
         }
-        string genome = System.Convert.ToBase64String(b);
+        string genome = Convert.ToBase64String(b);
         
         //Debug.LogFormat(genome);
         return genome;
