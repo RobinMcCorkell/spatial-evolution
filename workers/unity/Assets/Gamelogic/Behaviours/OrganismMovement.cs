@@ -15,7 +15,11 @@ namespace Assets.Gamelogic.Organisms {
 
         int ticksTravelled = 0;
         int maxTicks;
-        float tickDelay = Time.deltaTime; //time between Update calls.
+        float tickDelay; //time between Update calls.
+
+        public void Start() {
+            tickDelay = Time.deltaTime;
+        }
 
         public void OnEnable() {
             changeDirection();
