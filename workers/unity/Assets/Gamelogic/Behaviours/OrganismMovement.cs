@@ -31,7 +31,7 @@ namespace Assets.Gamelogic.Organisms {
             tickDelay = Time.deltaTime;
 
             maxTicks = OrganismMoverWriter.Data.timeConstant;
-            if ((float)ticksTravelled / maxTicks > Random.Range(0, 1) * 2)
+            if ((float)ticksTravelled / maxTicks > Random.Range(0.3, 1) * 2)
             {
                 changeDirection();
                 ticksTravelled = 0;
@@ -41,14 +41,14 @@ namespace Assets.Gamelogic.Organisms {
             var currentAngle = OrganismMoverWriter.Data.angle;
 
             var xTranslation = currentSpeed * tickDelay * Mathf.Cos(currentAngle);
-            var yTranslation = currentSpeed * tickDelay * Mathf.Sin(currentAngle);
+            var zTranslation = currentSpeed * tickDelay * Mathf.Sin(currentAngle);
 
             transform.Translate(xTranslation, yTranslation, 0, Space.World);
 
             Coordinates oldCoordinates = OrganismMoverWriter.Data.position;
             Coordinates newCoordinates = new Coordinates(Mathf.Clamp((float)oldCoordinates.X + xTranslation, 0, 200), 
-                                                         Mathf.Clamp((float)oldCoordinates.Y + yTranslation, 0, 200     ), 
-                                                         oldCoordinates.Z);
+                                                         oldCoordinates.Y,
+                                                         Mathf.Clamp((float)oldCoordinates.Z + zTranslation, 0, 200));
 
             OrganismMoverWriter.Send(new Mover.Update().SetPosition(newCoordinates));
             ticksTravelled++;

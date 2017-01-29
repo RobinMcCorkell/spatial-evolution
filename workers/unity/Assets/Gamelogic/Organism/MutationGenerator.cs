@@ -28,7 +28,7 @@ namespace Assets.Gamelogic.Organisms
 
         public void maybeMutate() {
             mutationProbability = OrganismMutationWriter.Data.mutationProbability;
-            if (mutationProbability > Random.Range(0,1)) {
+            if (mutationProbability > Random.Range(0,1) * 100) {
                 mutate();
             }
         }
