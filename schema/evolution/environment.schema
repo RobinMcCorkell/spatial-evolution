@@ -6,7 +6,7 @@ enum MaterialType {
 }
 
 type Material {
-	MaterialType type = 1;
+	MaterialType mat_type = 1;
 }
 
 type ConsumptionRequest {
