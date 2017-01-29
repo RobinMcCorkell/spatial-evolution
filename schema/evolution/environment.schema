@@ -5,10 +5,6 @@ enum MaterialType {
 	B = 1;
 }
 
-type Material {
-	MaterialType mat_type = 1;
-}
-
 type ConsumptionRequest {
 	MaterialType consumed = 1;
 	MaterialType produced = 2;
@@ -23,4 +19,9 @@ component Environment {
 	map<MaterialType, uint32> resources = 1;
 
 	command ConsumptionRequest consume returns ConsumptionResponse;
+}
+
+component Position {
+	id = 1101;
+	EntityPosition position = 1;
 }
