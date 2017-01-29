@@ -1,6 +1,7 @@
 ﻿using Improbable.Unity.Core.Acls;
 using Evolution.Environment;
 using Improbable.Collections;
+using Improbable.Worker;
 using UnityEngine;
 
 namespace Assets.EntityTemplates
