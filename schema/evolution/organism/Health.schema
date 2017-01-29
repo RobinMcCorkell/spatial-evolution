@@ -1,0 +1,6 @@
+package evolution.organism;
+
+component Health {
+	id = 1322;
+	int32 value = 1;
+}

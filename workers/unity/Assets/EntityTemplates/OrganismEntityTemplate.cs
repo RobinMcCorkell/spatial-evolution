@@ -16,6 +16,7 @@ namespace Assets.EntityTemplates
 
             //Debug.Log(position);
 
+            entity.Add(new Health.Data(new HealthData(50)));
             entity.Add(new Consumer.Data(
                         new ConsumerData(Evolution.Material.A, Evolution.Material.B, 1.0)
                         ));
@@ -27,6 +28,7 @@ namespace Assets.EntityTemplates
 
             var acl = Acl.Build()
                 .SetReadAccess(CommonPredicates.PhysicsOrVisual)
+                .SetWriteAccess<Health>(CommonPredicates.PhysicsOnly)
                 .SetWriteAccess<Consumer>(CommonPredicates.PhysicsOnly)
                 .SetWriteAccess<Reproducer>(CommonPredicates.PhysicsOnly)
                 .SetWriteAccess<Mover>(CommonPredicates.PhysicsOnly)
