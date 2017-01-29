@@ -9,9 +9,9 @@ namespace Assets.EntityTemplates
 {
     public class EnvironmentNodeEntityTemplate : MonoBehaviour
     {
-        public static Entity GenerateEnvironmentNodeEntityTemplate(Coordinates position, Map<MaterialType, uint> initialResources)
+        public static SnapshotEntity GenerateEnvironmentNodeEntityTemplate(Coordinates position, Map<MaterialType, uint> initialResources)
         {
-            var entity = new Entity();
+            var entity = new SnapshotEntity { Prefab = "EnvironmentNode" };
 
             entity.Add(new Position.Data(new PositionData(position)));
             entity.Add(new Environment.Data(new EnvironmentData(initialResources)));

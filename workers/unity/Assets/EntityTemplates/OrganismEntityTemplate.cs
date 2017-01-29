@@ -10,9 +10,9 @@ namespace Assets.EntityTemplates
 {
     public class OrganismEntityTemplate : MonoBehaviour
     {
-        public static Entity GenerateOrganismEntityTemplate(Coordinates position, Genome genome)
+        public static SnapshotEntity GenerateOrganismEntityTemplate(Coordinates position, Genome genome)
         {
-            var entity = new Entity();
+            var entity = new SnapshotEntity { Prefab = "Organism" };
 
             entity.Add(new Consumer.Data(
                         new ConsumerData(MaterialType.A, MaterialType.B, 1.0)
