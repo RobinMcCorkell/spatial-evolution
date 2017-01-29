@@ -4,10 +4,12 @@ import "evolution/Material.schema";
 type ConsumptionRequest {
 	Material consumed = 1;
 	Material produced = 2;
+	map<Material, uint32> toxic_limits = 3;
 }
 
 type ConsumptionResponse {
-	bool success = 1;
+	bool starving = 1;
+	uint32 toxicity = 2;
 }
 
 component Resources {

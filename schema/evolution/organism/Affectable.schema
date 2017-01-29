@@ -1,12 +1,13 @@
 package evolution.organism;
 import "evolution/Material.schema";
 
-type Effect {
+type Toxicity {
+	uint32 value = 1;
 }
 
 component Affectable {
 	id = 1003;
 	map<evolution.Material, uint32> material_limits = 1;
-	event Effect taken_damage;
+	event Toxicity taken_damage;
 	double mutation_probability = 2;
 }

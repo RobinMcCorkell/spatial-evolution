@@ -18,6 +18,8 @@ namespace Assets.Gamelogic.Behaviours
     {
         [Require]
         private Consumer.Writer ConsumerWriter;
+        [Require]
+        private Affectable.Writer AffectWriter;
 
         public void OnEnable()
         {
@@ -34,7 +36,7 @@ namespace Assets.Gamelogic.Behaviours
             SpatialOS.Commands.SendCommand(
                 ConsumerWriter,
                 Resources.Commands.ConsumeResources.Descriptor,
-                new ConsumptionRequest(ConsumerWriter.Data.consumes, ConsumerWriter.Data.produces),
+                new ConsumptionRequest(ConsumerWriter.Data.consumes, ConsumerWriter.Data.produces, AffectWriter.Data.materialLimits),
                 nodeId,
                 result =>
                 {
@@ -43,9 +45,12 @@ namespace Assets.Gamelogic.Behaviours
                         Debug.LogError("failed to send consumption command with error " + result.ErrorMessage);
                         return;
                     }
-                    if (!result.Response.Value.success)
+                    if (result.Response.Value.starving)
                     {
                         ConsumerWriter.Send(new Consumer.Update().AddStarving(new Starving()));
+                    }
+                    if (result.Response.Value.toxicity > 0) {
+                        AffectWriter.Send(new Affectable.Update().AddTakenDamage(new Toxicity(result.Response.Value.toxicity)));
                     }
                 }
             );
