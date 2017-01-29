@@ -1,0 +1,9 @@
+package evolution.organism;
+import "evolution/Material.schema";
+
+component Consumer {
+	id = 1000;
+	evolution.Material consumes = 1;
+	evolution.Material produces = 2;
+	double radius = 3;
+}

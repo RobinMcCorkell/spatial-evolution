@@ -1,0 +1,6 @@
+package evolution.environment;
+
+component Position {
+	id = 1101;
+	EntityPosition position = 1;
+}

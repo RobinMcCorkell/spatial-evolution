@@ -1,0 +1,19 @@
+package evolution.environment;
+import "evolution/Material.schema";
+
+type ConsumptionRequest {
+	Material consumed = 1;
+	Material produced = 2;
+}
+
+type ConsumptionResponse {
+	bool success = 1;
+}
+
+component Resources {
+	id = 1100;
+	map<Material, uint32> resources = 1;
+
+	command ConsumptionRequest consume returns ConsumptionResponse;
+}
+

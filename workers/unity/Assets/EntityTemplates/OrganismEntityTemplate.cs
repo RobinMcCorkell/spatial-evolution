@@ -15,12 +15,12 @@ namespace Assets.EntityTemplates
             var entity = new SnapshotEntity { Prefab = "Organism" };
 
             entity.Add(new Consumer.Data(
-                        new ConsumerData(MaterialType.A, MaterialType.B, 1.0)
+                        new ConsumerData(Evolution.Material.A, Evolution.Material.B, 1.0)
                         ));
             entity.Add(new Reproducer.Data(new ReproducerData(genome, genome)));
             entity.Add(new Mover.Data(new MoverData(position, 1.0, 1)));
             entity.Add(new Affectable.Data(
-                        new AffectableData(new Map<MaterialType, uint>())
+                        new AffectableData(new Map<Evolution.Material, uint>())
                         ));
 
             var acl = Acl.Build()
