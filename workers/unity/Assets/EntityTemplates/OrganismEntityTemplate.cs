@@ -6,6 +6,7 @@ using Improbable.Worker;
 using Improbable.Math;
 using UnityEngine;
 using System;
+using System.Collections;
 
 namespace Assets.EntityTemplates
 {
@@ -20,7 +21,7 @@ namespace Assets.EntityTemplates
             entity.Add(new Health.Data(new HealthData(50)));
 
             string dominantGenome = mixGenes(genome1, genome2);
-            byte[] phenotype = Convert.FromBase64String(dominantGenome);
+            BitArray phenotype = new BitArray(Convert.FromBase64String(dominantGenome));
 
             var food = getFood(phenotype, genomeKey[0]);
 
@@ -57,12 +58,12 @@ namespace Assets.EntityTemplates
             return result;
         }
 
-        public static Evolution.Material getFood(byte[] phenotype, int[] key)
+        public static Evolution.Material getFood(BitArray phenotype, int[] key)
         {
             var x = 0;
             foreach (int i in key)
             {
-                x += phenotype[i];
+                x += phenotype[i] ? 1 : 0;
             }
             switch(x)
             {
@@ -84,58 +85,58 @@ namespace Assets.EntityTemplates
             else { return Evolution.Material.A;  }
         }
 
-        public static double getRadius(byte[] phenotype, int[] key)
+        public static double getRadius(BitArray phenotype, int[] key)
         {
             string s = "";
            
             foreach(int i in key)
             {
-                s += phenotype[i].ToString();
+                s += phenotype[i] ? "1" : "0";
             }
             return Convert.ToInt32(s, 2) / 2;
         }
 
-        public static float getSpeed(byte[] phenotype, int[] key)
+        public static float getSpeed(BitArray phenotype, int[] key)
         {
             string s = "";
             foreach (int i in key)
             {
-                s += phenotype[i].ToString();
+                s += phenotype[i] ? "1" : "0";
             }
             return (Convert.ToInt32(s, 2) * 2) / 5;
         }
 
-        public static Map<Evolution.Material, uint> getLimits(byte[] phenotype, int[][] key)
+        public static Map<Evolution.Material, uint> getLimits(BitArray phenotype, int[][] key)
         {
             Map<Evolution.Material, uint> result = new Map<Evolution.Material, uint>(3);
             string limMat1 = "";
             foreach (int j in key[4])
             {
-                limMat1 += phenotype[j].ToString();
+                limMat1 += phenotype[j] ? "1" : "0";
             }
             result[Evolution.Material.A] = Convert.ToUInt32(limMat1);
             string limMat2 = "";
             foreach (int j in key[5])
             {
-                limMat2 += phenotype[j].ToString();
+                limMat2 += phenotype[j] ? "1" : "0";
             }
             result[Evolution.Material.B] = Convert.ToUInt32(limMat2);
             string limMat3 = "";
             foreach (int j in key[5])
             {
-                limMat3 += phenotype[j].ToString();
+                limMat3 += phenotype[j] ? "1" : "0";
             }
             result[Evolution.Material.C] = Convert.ToUInt32(limMat3);
 
             return result;
         }
 
-        public static float getMutationP(byte[] phenotype, int[] key)
+        public static float getMutationP(BitArray phenotype, int[] key)
         {
             string s = "";
             foreach (int i in key)
             {
-                s += phenotype[i].ToString();
+                s += phenotype[i] ? "1" : "0";
             }
             if (Convert.ToInt32(s, 2) == 7) { return 0.005f; }
             else { return 0.001f; }
