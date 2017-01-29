@@ -14,6 +14,8 @@ namespace Assets.EntityTemplates
         {
             var entity = new SnapshotEntity { Prefab = "OrganismPrefab" };
 
+            Debug.Log(position);
+
             entity.Add(new Consumer.Data(
                         new ConsumerData(Evolution.Material.A, Evolution.Material.B, 1.0)
                         ));
