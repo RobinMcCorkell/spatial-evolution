@@ -29,7 +29,7 @@ namespace Assets.Gamelogic.Behaviours
         }
 
         public void OnAffectUpdated(Affectable.Update update) {
-            uint damage = 0;
+            int damage = 0;
             for (var i = 0; i < update.takenDamage.Count; ++i) {
                 damage += 1;
             }
@@ -39,7 +39,7 @@ namespace Assets.Gamelogic.Behaviours
         }
 
         public void OnConsumerUpdated(Consumer.Update update) {
-            uint damage = 0;
+            int damage = 0;
             for (var i = 0; i < update.starving.Count; ++i) {
                 damage += 2;
             }

@@ -27,7 +27,7 @@ public class SnapshotMenu : MonoBehaviour
         {
             for (int j = 0; j < 60; j++)
             {
-                Coordinates pos = new Coordinates(i, j, 0);
+                Coordinates pos = new Coordinates(i, 0, j);
                 Map<Evolution.Material, uint> initialRes = new Map<Evolution.Material, uint>(2);
                 foreach (Evolution.Material mat in Enum.GetValues(typeof(Evolution.Material)))
                 {
@@ -39,7 +39,7 @@ public class SnapshotMenu : MonoBehaviour
 
         for (int id = currentEntityId; id < currentEntityId + 50; id++)
         {
-            Coordinates pos = new Coordinates(Random.Range(5f, 55f), Random.Range(5f, 55f), 0);
+            Coordinates pos = new Coordinates(Random.Range(5f, 55f), 0.0f, Random.Range(5f, 55f));
             Evolution.Organism.Genome gen1 = new Evolution.Organism.Genome(GetRandomGenome());
             Evolution.Organism.Genome gen2 = new Evolution.Organism.Genome(GetRandomGenome());
             snapshotEntities.Add(new EntityId(id), OrganismEntityTemplate.GenerateOrganismEntityTemplate(pos, gen1, gen2));
